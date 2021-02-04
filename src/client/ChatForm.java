@@ -73,7 +73,7 @@ public class ChatForm extends JFrame {
         JButton btnPlusUser = new JButton("+ User");
         JButton btnSelectChat = new JButton("Подключиться к чату");
         btnPlusUser.addActionListener(new AddUserToChat(this, outMessage, inMessage));
-        AddChatAction addChatAction = new AddChatAction(this, outMessage, inMessage);
+        AddChatAction addChatAction = new AddChatAction(this, outMessage);
         btnPlusChat.addActionListener(addChatAction);
 
 

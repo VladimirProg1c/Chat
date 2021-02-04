@@ -30,11 +30,9 @@ public class SendMessage implements ActionListener {
         String userId = chatForm.getUser().getId().toString();//id
         String chatName = chatForm.getJlChat().getSelectedValue();
         String SET_MES = "#mes#" + strMessage + "#" + chatName + "#" + userName + "#" + userId;
-        //answer
-        System.out.println("SendMessage");
+
         outMessage.println(SET_MES);
         outMessage.flush();
-
 
     }
 }
