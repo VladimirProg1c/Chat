@@ -14,9 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Server {
-		// порт, который будет прослушивать наш сервер
+
     static final int PORT = 3443;
-		// список клиентов, которые будут подключаться к серверу
     private ArrayList<ClientHandler> clients = new ArrayList<ClientHandler>();
 
     public Server() {
@@ -29,24 +28,15 @@ public class Server {
             return;
         }
 
-				// сокет клиента, это некий поток, который будет подключаться к серверу
-				// по адресу и порту
         Socket clientSocket = null;
-				// серверный сокет
         ServerSocket serverSocket = null;
         try {
-						// создаём серверный сокет на определенном порту
             serverSocket = new ServerSocket(PORT);
             System.out.println("Сервер запущен!");
-						// запускаем бесконечный цикл
             while (true) {
-								// таким образом ждём подключений от сервера
                 clientSocket = serverSocket.accept();
-								// создаём обработчик клиента, который подключился к серверу
-								// this - это наш сервер
                 ClientHandler client = new ClientHandler(clientSocket, this);
                 clients.add(client);
-								// каждое подключение клиента обрабатываем в новом потоке
                 new Thread(client).start();
             }
         }
@@ -55,7 +45,6 @@ public class Server {
         }
         finally {
             try {
-								// закрываем подключение
                 clientSocket.close();
                 System.out.println("Сервер остановлен");
                 serverSocket.close();
@@ -65,16 +54,13 @@ public class Server {
             }
         }
     }
-		
-		// отправляем сообщение всем клиентам
-    public void sendMessageToAllClients(Message msg) {
 
+    public void sendMessageToAllClients(Message msg) {
 
         String SELECT_CHAT_User = "select * FROM db_chat_user WHERE  chat_id = '" + msg.getChat().getId() + "'";
 
         long idUser = 0;
         ArrayList<Long> arLong = new ArrayList<>();
-
 
         try (Connection con = ConnectionBuilder.getConnection();
              Statement stmt = con.createStatement();
@@ -95,12 +81,9 @@ public class Server {
             {
                 o.sendMsg(msg);
             }
-
         }
-
     }
 
-		// удаляем клиента из коллекции при выходе из чата
     public void removeClient(ClientHandler client) {
         clients.remove(client);
     }

@@ -52,7 +52,7 @@ public class ClientReg  extends JFrame {
 
     user = new User();
 
-    RegAction regAction = new RegAction(this, clientSocket, inMessage, outMessage);
+    RegAction regAction = new RegAction(this, outMessage);
     btnReg.addActionListener(regAction);
 
     textFieldUserName.addActionListener(new ActionListener() {
@@ -114,7 +114,6 @@ public class ClientReg  extends JFrame {
 
     pack();
     setVisible(true);
-
 }
 
     public String getTextFieldUserName() {
@@ -127,7 +126,4 @@ public class ClientReg  extends JFrame {
         return textFieldUserPass.getText();
 
     }
-
-
-
 }

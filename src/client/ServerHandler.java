@@ -35,44 +35,35 @@ public class ServerHandler implements Runnable {
     public void run() {
 
         try {
-            // бесконечный цикл
             while (true) {
-                // если есть входящее сообщение
                 if (inMessage.hasNext()) {
-                    // считываем его
                     String inMes = inMessage.nextLine();
 
                     if (inMes.startsWith("#msg#")) {
                         String serMessage1 = inMes.substring(5);
                         String strChatName = serMessage1.substring(0, serMessage1.indexOf("#"));
                         String strTextMes = serMessage1.substring(serMessage1.indexOf("#") + 1);
-                        // выводим сообщение
-                        if(chatForm.getChat().getName().equals(strChatName)){
-
-                        chatForm.jtaTextAreaMessage.append(strTextMes);
-                        // добавляем строку перехода
-                        chatForm.jtaTextAreaMessage.append("\n");
+                        if (chatForm.getChat().getName().equals(strChatName)) {
+                            chatForm.jtaTextAreaMessage.append(strTextMes);
+                            chatForm.jtaTextAreaMessage.append("\n");
                         }
                     }
                     if (inMes.startsWith("#GME#")) {
                         //("chat_name")+"#"+("user_name")+"#"+("massage_text")+"#"+("created_at");
-
                         String strMessage = inMes.substring(5);
                         String strChatName = strMessage.substring(0, strMessage.indexOf("#"));
 
-                        String strBuf = strMessage.substring( strMessage.indexOf("#")+1);
+                        String strBuf = strMessage.substring(strMessage.indexOf("#") + 1);
                         String strUserName = strBuf.substring(0, strBuf.indexOf("#"));
 
-                        String strBuf1 = strBuf.substring( strBuf.indexOf("#")+1);
+                        String strBuf1 = strBuf.substring(strBuf.indexOf("#") + 1);
                         String strTextMes = strBuf1.substring(0, strBuf1.indexOf("#"));
 
-                        String strCreated = strBuf1.substring( strBuf1.indexOf("#")+1);
+                        String strCreated = strBuf1.substring(strBuf1.indexOf("#") + 1);
 
-                        // выводим сообщение
-                        if(chatForm.getChat().getName().equals(strChatName)){
+                        if (chatForm.getChat().getName().equals(strChatName)) {
 
-                            chatForm.jtaTextAreaMessage.append(strUserName + ": "+ strTextMes);
-                            // добавляем строку перехода
+                            chatForm.jtaTextAreaMessage.append(strUserName + ": " + strTextMes);
                             chatForm.jtaTextAreaMessage.append("\n");
                         }
                     }
@@ -87,7 +78,6 @@ public class ServerHandler implements Runnable {
                         System.out.println("Ой");
                     }
                     if (inMes.startsWith("#userCheck+#")) {
-
                         Long idU = Long.valueOf(inMes.substring(12));
                         User user = new User(clientStart.getTextFieldUserName(), idU);
 

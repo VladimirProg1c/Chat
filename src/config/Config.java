@@ -10,13 +10,10 @@ public class Config {
     public static final String DB_PASSWORD = "db.password";
 
     public static Properties properties = new Properties();
-    //public static Properties properties;
     public synchronized static String getProperty(String name){
-        //public Properties properties = new Properties();
 
         if (properties.isEmpty()){
             try (InputStream is = Config.class.getClassLoader().getResourceAsStream("config.properties")){
-
                 properties.load(is);
             }
             catch (Exception ex){
@@ -25,6 +22,5 @@ public class Config {
             }
         }
         return properties.getProperty(name);
-
     }
 }

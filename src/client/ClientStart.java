@@ -55,7 +55,7 @@ public class ClientStart extends JFrame {
         StartRegAction startRegAction = new StartRegAction(clientSocket,inMessage,outMessage,serverHandler);
         btnReg.addActionListener(startRegAction);
 
-        StartCheckinAction startCheckinAction = new StartCheckinAction(this,clientSocket,inMessage,outMessage);
+        StartCheckinAction startCheckinAction = new StartCheckinAction(this,outMessage);
         btnCheckin.addActionListener(startCheckinAction);
 
         GroupLayout layout = new GroupLayout(getContentPane());

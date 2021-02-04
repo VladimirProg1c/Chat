@@ -15,9 +15,6 @@ public class User {
     private Long id;
     private String userName;
     private String userPass;
-    //private Date created_at;
-    //private Set<Chat> chats = new HashSet<>();
-    //private Set<Message> messages = new HashSet<>();
 
     public User() { }
 
@@ -54,28 +51,4 @@ public class User {
     public String getUserPass() {
         return userPass;
     }
-  /*  public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-*/
-   /* public Set<Chat> getChats() {
-        return chats;
-    }
-
-    public void setChats(Set<Chat> chats) {
-        this.chats = chats;
-    }
-
-    public Set<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(Set<Message> messages) {
-        this.messages = messages;
-    }*/
-
 }

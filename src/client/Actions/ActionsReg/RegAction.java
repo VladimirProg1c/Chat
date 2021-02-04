@@ -19,20 +19,13 @@ import java.util.Scanner;
 public class RegAction implements ActionListener {
 
     public ClientReg clientReg;
-    public String textFieldUserName;
-    public String textFieldUserPass;
-
-    private Socket clientSocket;
-    private Scanner inMessage;
     private PrintWriter outMessage;
     private static String SET_USER ;
 
 
-    public RegAction(ClientReg clientReg, Socket clientSocket, Scanner inMessage, PrintWriter outMessage){
+    public RegAction(ClientReg clientReg, PrintWriter outMessage){
 
         this.clientReg = clientReg;
-        this.clientSocket = clientSocket;
-        this.inMessage = inMessage;
         this.outMessage = outMessage;
     }
 
@@ -45,41 +38,5 @@ public class RegAction implements ActionListener {
 
         outMessage.println("#reg#" + SET_USER);
         outMessage.flush();
-
-/*                try {
-                    Thread.sleep(5000);
-
-
-
-                    while (true) {
-                        System.out.println("ааа");
-
-                            if (inMessage.hasNext()) {
-                            System.out.println("hasNext1");
-                            String clientMessage = inMessage.nextLine();
-                            System.out.println("nextLine");
-
-                            if (clientMessage.equalsIgnoreCase("#userReg+#")) {
-                                JOptionPane.showMessageDialog(clientReg, "Создан пользователь");
-                                System.out.println("Создан пользователь");
-                                clientReg.dispose();
-                                break;
-                            }
-                            if (clientMessage.equalsIgnoreCase("#userReg-#")) {
-                                JOptionPane.showMessageDialog(clientReg, "Ой");
-                                System.out.println("Ой");
-                                break;
-                            }
-                            Thread.sleep(1000);
-
-                        }
-
-                    }
-                } catch (Exception e1) {
-                    System.out.println(e1.getStackTrace());
-                }
-                finally {
-                    System.out.println("finally");
-                }*/
     }
 }

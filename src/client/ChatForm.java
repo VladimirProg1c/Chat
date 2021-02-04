@@ -76,7 +76,6 @@ public class ChatForm extends JFrame {
         AddChatAction addChatAction = new AddChatAction(this, outMessage);
         btnPlusChat.addActionListener(addChatAction);
 
-
         btnSelectChat.addActionListener(new ConnectChatAction(this,outMessage));
 
         JTextArea jtaMessage = new JTextArea();
@@ -105,9 +104,6 @@ public class ChatForm extends JFrame {
             e.printStackTrace();
         }
 
-        //String[] arChat = listChat.toArray(new String[0]);
-        //jlChat.setListData(arChat);
-
         JScrollPane jlChatSP = new JScrollPane(jlChat);
         JScrollPane jlUserSP = new JScrollPane(jlUser);
 
@@ -125,8 +121,6 @@ public class ChatForm extends JFrame {
         getContentPane().setLayout(layout);
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
-
-        //jlUserChatSP.setSize(200,);
 
         layout.setHorizontalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -154,7 +148,6 @@ public class ChatForm extends JFrame {
                 )
         );
 
-
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(BASELINE)
                         .addComponent(lChat)
@@ -174,41 +167,8 @@ public class ChatForm extends JFrame {
                         .addComponent(btnPlusUser)
                 )
         );
-        //layout.linkSize(SwingConstants.HORIZONTAL, jlUserChatSP, jlUserSP);
+
         btnSend.addActionListener(new SendMessage(this, inMessage, outMessage));
-
-
-       /* new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    // бесконечный цикл
-                    while (true) {
-                        // если есть входящее сообщение
-                        if (inMessage.hasNext()) {
-                            // считываем его
-                            String inMes = inMessage.nextLine();
-
-                            if (inMes.startsWith("#msg#")) {
-                                String serMessage1 = inMes.substring(5);
-                                String strChatName = serMessage1.substring(0, serMessage1.indexOf("#"));
-                                String strTextMes = serMessage1.substring(serMessage1.indexOf("#") + 1);
-                                // выводим сообщение
-                                jtaTextAreaMessage.append(strTextMes);
-                                // добавляем строку перехода
-                                jtaTextAreaMessage.append("\n");
-                            }
-                            if (){
-
-                            }
-                        } else {
-                            System.out.println("test");
-                        }
-                    }
-                } catch (Exception e) {
-                }
-            }
-        }).start();*/
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -254,66 +214,10 @@ public class ChatForm extends JFrame {
                 + user.getId() + "') ";
         outMessage.println("#GCH#" + GET_CHATS + System.lineSeparator());
         outMessage.flush();
-
-/*        try {
-            Thread.sleep(1000);
-
-            while (true) {
-
-                if (inMessage.hasNext()) {
-
-                    String clientMessage = inMessage.nextLine();
-                    if (clientMessage.startsWith("#GCHSSS#")) {
-                        String stGUS = clientMessage.substring(8);
-                        listChat.add(stGUS);
-                    }
-                    if (clientMessage.startsWith("#GCHEND#")) {
-
-                        break;
-
-                    }
-                } else {
-                    break;
-                }
-            }
-            repaint();
-        } catch (Exception e1) {
-            System.out.println(e1.getStackTrace());
-        }*/
-
-/*        String[] arChat = listChat.toArray(new String[0]);
-        jlChat.setListData(arChat);
-        jlChatSP = new JScrollPane(jlChat);*/
     }
 
     public void updateUser() {
         this.outMessage.println("#GUS#" + GET_USERS + System.lineSeparator());
         this.outMessage.flush();
-
-/*        try {
-            Thread.sleep(1000);
-
-            while (true) {
-
-                if (this.inMessage.hasNext()) {
-
-                    String clientMessage = this.inMessage.nextLine();
-
-                    if (clientMessage.startsWith("#GUSSSS#")) {
-                        String stGUS = clientMessage.substring(8);
-                        listUser.add(stGUS);
-                    }
-                    if (clientMessage.startsWith("#GUSEND#")) {
-
-                        break;
-
-                    }
-                } else {
-                    break;
-                }
-            }
-        } catch (Exception e1) {
-            System.out.println(e1.getStackTrace());
-        }*/
     }
 }
